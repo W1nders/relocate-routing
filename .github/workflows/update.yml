@@ -1,0 +1,85 @@
+name: Auto-Update Geo & Configs
+
+on:
+  schedule:
+    - cron: "0 */6 * * *" # Каждые 6 часов
+  workflow_dispatch: # Кнопка ручного запуска
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download latest geoip and geosite
+        run: |
+          mkdir -p data
+          curl -L -o data/geoip.dat https://github.com/hydraponique/roscomvpn-geoip/releases/latest/download/geoip.dat
+          curl -L -o data/geosite.dat https://github.com/hydraponique/roscomvpn-geosite/releases/latest/download/geosite.dat
+
+      - name: Build Configs and README
+        run: |
+          cd scripts
+          python3 build.py
+
+      - name: Commit and Push
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ configs/ docs/ README.md
+          if ! git diff-index --quiet HEAD --; then
+            git commit -m "Auto-update: sync geo-data and rebuild configs"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+
+      - name: Create ZIP Archives and GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tag=$(date +'%Y%m%d%H%M')
+          zip -r configs.zip configs/
+          zip -j geosite.zip data/geosite.dat
+          zip -j geoip.zip data/geoip.dat
+          
+          gh release create "$tag" configs.zip geosite.zip geoip.zip \
+            --title "Routing Update $tag" \
+            --notes "Автоматическое обновление баз и конфигураций роутинга."
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/
+
+  deploy-pages:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
