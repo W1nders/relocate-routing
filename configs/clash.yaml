@@ -1,0 +1,24 @@
+# Кастомный роутинг Relocate VPN
+rules:
+  - GEOSITE,win-spy,REJECT
+  - GEOSITE,torrent,REJECT
+  - GEOSITE,category-ads,REJECT
+  - GEOSITE,github,PROXY
+  - GEOSITE,twitch-ads,PROXY
+  - GEOSITE,youtube,PROXY
+  - GEOSITE,telegram,PROXY
+  - GEOSITE,private,DIRECT
+  - GEOSITE,category-ru,DIRECT
+  - GEOSITE,microsoft,DIRECT
+  - GEOSITE,apple,DIRECT
+  - GEOSITE,google-play,DIRECT
+  - GEOSITE,epicgames,DIRECT
+  - GEOSITE,riot,DIRECT
+  - GEOSITE,escapefromtarkov,DIRECT
+  - GEOSITE,steam,DIRECT
+  - GEOSITE,twitch,DIRECT
+  - GEOSITE,pinterest,DIRECT
+  - GEOSITE,faceit,DIRECT
+  - GEOIP,private,DIRECT,no-resolve
+  - GEOIP,direct,DIRECT,no-resolve
+  - MATCH,PROXY

@@ -1,0 +1,49 @@
+{
+  "route": {
+    "auto_detect_interface": true,
+    "rules": [
+      {
+        "geosite": [
+          "win-spy",
+          "torrent",
+          "category-ads"
+        ],
+        "outbound": "block"
+      },
+      {
+        "geosite": [
+          "github",
+          "twitch-ads",
+          "youtube",
+          "telegram"
+        ],
+        "outbound": "proxy"
+      },
+      {
+        "geosite": [
+          "private",
+          "category-ru",
+          "microsoft",
+          "apple",
+          "google-play",
+          "epicgames",
+          "riot",
+          "escapefromtarkov",
+          "steam",
+          "twitch",
+          "pinterest",
+          "faceit"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "geoip": [
+          "private",
+          "direct"
+        ],
+        "outbound": "direct"
+      }
+    ],
+    "final": "proxy"
+  }
+}
