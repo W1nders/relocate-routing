@@ -1,0 +1,111 @@
+{
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "outboundTag": "block",
+        "domain": [
+          "full:max.ru",
+          "full:web.max.ru",
+          "full:download.max.ru",
+          "full:help.max.ru",
+          "full:business.max.ru",
+          "full:dev.max.ru",
+          "full:legal.max.ru",
+          "full:platform-api.max.ru",
+          "full:st.max.ru",
+          "full:ru.oneme.app",
+          "full:oneme.ru",
+          "full:api.oneme.ru",
+          "full:ws-api.oneme.ru",
+          "full:calls.okcdn.ru",
+          "full:api.max.ru",
+          "full:botapi.max.ru",
+          "full:link.max.ru",
+          "full:i.max.ru",
+          "full:i.oneme.ru",
+          "full:iu.max.ru",
+          "full:iu.oneme.ru",
+          "full:iusmile.max.ru",
+          "full:iusmile.oneme.ru",
+          "full:notify-gu.oneme.ru",
+          "full:proxy.oneme.ru",
+          "full:st-test.oneme.ru",
+          "full:api-gost.oneme.ru",
+          "full:fgost.oneme.ru",
+          "full:vu.mycdn.me",
+          "full:pimg.mycdn.me",
+          "full:tracker-api.vk-analytics.ru",
+          "full:sdk-api.apptracer.ru"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "block",
+        "ip": [
+          "185.16.148.119/32",
+          "185.16.148.121/32",
+          "217.20.152.209/32",
+          "217.20.155.50/32",
+          "217.20.156.179/32",
+          "185.16.148.0/23",
+          "185.16.150.0/23",
+          "217.20.144.0/22",
+          "217.20.148.0/24",
+          "217.20.149.0/24",
+          "217.20.150.0/23",
+          "217.20.152.0/22",
+          "217.20.156.0/23",
+          "217.20.158.0/24",
+          "217.20.159.0/24"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "block",
+        "domain": [
+          "geosite:win-spy",
+          "geosite:torrent",
+          "geosite:category-ads"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "proxy",
+        "domain": [
+          "geosite:github",
+          "geosite:twitch-ads",
+          "geosite:youtube",
+          "geosite:telegram"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "domain": [
+          "geosite:private",
+          "geosite:category-ru",
+          "geosite:microsoft",
+          "geosite:apple",
+          "geosite:google-play",
+          "geosite:epicgames",
+          "geosite:riot",
+          "geosite:escapefromtarkov",
+          "geosite:steam",
+          "geosite:twitch",
+          "geosite:pinterest",
+          "geosite:faceit"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "ip": [
+          "geoip:private",
+          "geoip:direct"
+        ]
+      }
+    ]
+  }
+}
