@@ -53,4 +53,4 @@
 | 📄 **CONFIG.JSON** | [xray.json](https://raw.githubusercontent.com/W1nders/relocate-routing/main/configs/xray.json) | Скопируйте ссылку для ручного импорта правил |
 
 ---
-*Сгенерировано автоматически системой CI/CD: 2026-03-07 18:30:01 UTC*
+*Сгенерировано автоматически системой CI/CD: 2026-03-07 19:33:32 UTC*
