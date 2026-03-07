@@ -12,7 +12,7 @@
   "DomesticDNSIP": "77.88.8.8",
   "Geoipurl": "https://raw.githubusercontent.com/W1nders/relocate-routing/main/data/geoip.dat",
   "Geositeurl": "https://raw.githubusercontent.com/W1nders/relocate-routing/main/data/geosite.dat",
-  "LastUpdated": "1772902084",
+  "LastUpdated": "1772908201",
   "DnsHosts": {},
   "RouteOrder": "block-proxy-direct",
   "DirectSites": [
