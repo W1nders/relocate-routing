@@ -73,4 +73,4 @@
 | `xray.json` | [https://raw.githubusercontent.com/W1nders/relocate-routing/main/configs/xray.json](https://raw.githubusercontent.com/W1nders/relocate-routing/main/configs/xray.json) |
 
 ---
-*Сгенерировано автоматически системой CI/CD: 2026-03-08 06:39:13 UTC*
+*Сгенерировано автоматически системой CI/CD: 2026-03-08 12:42:25 UTC*
